@@ -27,19 +27,14 @@ jobs:
       id: juce-cache
       uses: actions/cache@v2	  	
       with:
-        path: C:/JUCE
+        path: D:\a\NewProject\NewProject\JUCE
         key: ${{ runner.os }}-juce
     - name: Get scoop
       run: | 
-        ls
-        cd C:/
-        ls
-        $env:SCOOP='C:\scoop'
+        $env:SCOOP='D:\a\NewProject\NewProject\scoop'
         [environment]::setEnvironmentVariable('SCOOP',$env:SCOOP,'User')
         iwr -useb get.scoop.sh | iex
-        $env:SCOOP_GLOBAL='c:\apps'
-        [environment]::setEnvironmentVariable('SCOOP_GLOBAL',$env:SCOOP_GLOBAL,'Machine')
-        scoop install -g wget curl unzip
+        scoop install wget curl unzip
     - name: Get JUCE
       run: | 
         curl -o juce-6.0.1-linux.zip https://github.com/juce-framework/JUCE/releases/download/6.0.1/juce-6.0.1-windows.zip
