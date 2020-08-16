@@ -36,6 +36,5 @@ jobs:
         scoop install wget curl unzip
     - name: Get JUCE
       run: | 
-        wget https://github.com/juce-framework/JUCE/releases/download/6.0.1/juce-6.0.1-windows.zip
         curl -o juce-6.0.1-linux.zip https://github.com/juce-framework/JUCE/releases/download/6.0.1/juce-6.0.1-windows.zip
         unzip x juce-6.0.1-linux.zip
