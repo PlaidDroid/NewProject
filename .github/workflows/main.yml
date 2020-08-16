@@ -29,10 +29,12 @@ jobs:
       with:
         path: C:/JUCE
         key: ${{ runner.os }}-juce
-    - name: Get JUCE library
+    - name: Get scoop
       run: | 
         cd C:/
         iwr -useb get.scoop.sh | iex
-        scoop install wget
+        scoop install wget unzip
+    - name: Get JUCE
+      run: |
         wget https://github.com/juce-framework/JUCE/releases/download/6.0.1/juce-6.0.1-linux.zip
         unzip juce-6.0.1-linux.zip
