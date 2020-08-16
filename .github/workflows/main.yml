@@ -32,8 +32,12 @@ jobs:
     - name: Get scoop
       run: | 
         cd C:/
+        $env:SCOOP='C:\scoop'
+        [environment]::setEnvironmentVariable('SCOOP',$env:SCOOP,'User')
         iwr -useb get.scoop.sh | iex
-        scoop install wget curl unzip
+        $env:SCOOP_GLOBAL='c:\apps'
+        [environment]::setEnvironmentVariable('SCOOP_GLOBAL',$env:SCOOP_GLOBAL,'Machine')
+        scoop install -g wget curl unzip
     - name: Get JUCE
       run: | 
         curl -o juce-6.0.1-linux.zip https://github.com/juce-framework/JUCE/releases/download/6.0.1/juce-6.0.1-windows.zip
