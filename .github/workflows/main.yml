@@ -32,5 +32,7 @@ jobs:
     - name: Get JUCE library
       run: | 
         cd C:/
+        iwr -useb get.scoop.sh | iex
+        scoop install wget unzip
         wget https://github.com/juce-framework/JUCE/releases/download/6.0.1/juce-6.0.1-linux.zip
         unzip juce-6.0.1-linux.zip
