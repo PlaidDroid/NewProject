@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="AEPvKJ" name="NewProject" projectType="audioplug" useAppConfig="0"
+<JUCERPROJECT id="P6jnSZ" name="NewProject" projectType="audioplug" useAppConfig="0"
               addUsingNamespaceToJuceHeader="0" jucerFormatVersion="1">
-  <MAINGROUP id="kJns3f" name="NewProject">
-    <GROUP id="{93504D25-2B54-96E5-0A0E-0004BF4A2CF1}" name="Source">
-      <FILE id="G7YY1u" name="PluginProcessor.cpp" compile="1" resource="0"
+  <MAINGROUP id="NA257g" name="NewProject">
+    <GROUP id="{EA250BCE-4C71-AF7E-17C3-DE77151F7418}" name="Source">
+      <FILE id="HpJSn1" name="PluginProcessor.cpp" compile="1" resource="0"
             file="Source/PluginProcessor.cpp"/>
-      <FILE id="jRW5dC" name="PluginProcessor.h" compile="0" resource="0"
+      <FILE id="ygUkIT" name="PluginProcessor.h" compile="0" resource="0"
             file="Source/PluginProcessor.h"/>
-      <FILE id="wFLt5g" name="PluginEditor.cpp" compile="1" resource="0"
+      <FILE id="dyBtWV" name="PluginEditor.cpp" compile="1" resource="0"
             file="Source/PluginEditor.cpp"/>
-      <FILE id="r62WiW" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+      <FILE id="fRm9nV" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
     </GROUP>
   </MAINGROUP>
   <JUCEOPTIONS JUCE_STRICT_REFCOUNTEDPOINTER="1" JUCE_VST3_CAN_REPLACE_VST2="0"/>
@@ -51,7 +51,4 @@
     <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
     <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
   </MODULES>
-  <LIVE_SETTINGS>
-    <LINUX/>
-  </LIVE_SETTINGS>
 </JUCERPROJECT>
