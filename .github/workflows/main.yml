@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: JUCE CI
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
@@ -33,6 +33,6 @@ jobs:
       run: | 
         cd C:/
         iwr -useb get.scoop.sh | iex
-        scoop install wget unzip
+        scoop install wget
         wget https://github.com/juce-framework/JUCE/releases/download/6.0.1/juce-6.0.1-linux.zip
         unzip juce-6.0.1-linux.zip
