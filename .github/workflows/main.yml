@@ -10,8 +10,19 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-      - name: setup-msbuild
-        uses: microsoft/setup-msbuild@v1.0.1
+      - name: Get scoop
+        if: steps.juce-cache.outputs.cache-hit != 'true'
+        run: |
+          $env:SCOOP='D:\a\NewProject\NewProject\scoop'
+          [environment]::setEnvironmentVariable('SCOOP',$env:SCOOP,'User')
+          iwr -useb get.scoop.sh | iex
+          scoop install wget unzip make
+      - name: Get JUCE
+        if: steps.juce-cache.outputs.cache-hit != 'true'
+        run: |
+          .\scoop\apps\wget\current\wget https://github.com/juce-framework/JUCE/releases/download/6.0.1/juce-6.0.1-windows.zip
+          ls
+          unzip juce-6.0.1-windows.zip
       - name: Cache JUCE & scoop
         id: juce-cache
         uses: actions/cache@v2
@@ -20,23 +31,12 @@ jobs:
             D:\a\NewProject\NewProject\JUCE
             D:\a\NewProject\NewProject\scoop
           key: ${{ runner.os }}-juce
-      - name: Get scoop
-        if: steps.juce-cache.outputs.cache-hit != 'true'
-        run: |
-          $env:SCOOP='D:\a\NewProject\NewProject\scoop'
-          [environment]::setEnvironmentVariable('SCOOP',$env:SCOOP,'User')
-          iwr -useb get.scoop.sh | iex
-          scoop install wget curl unzip
-      - name: Get JUCE
-        if: steps.juce-cache.outputs.cache-hit != 'true'
-        run: |
-          .\scoop\apps\wget\current\wget https://github.com/juce-framework/JUCE/releases/download/6.0.1/juce-6.0.1-windows.zip
-          ls
-          unzip juce-6.0.1-windows.zip
       - name: Build
-        run: msbuild .\Builds\VisualStudio2019\NewProject.sln
+        run: |
+          cd .\Builds\LinuxMakefile
+          make
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
           name: Output
-          path: .\Builds\VisualStudio2019\build\
+          path: .\Builds\LinuxMakefile\build\
