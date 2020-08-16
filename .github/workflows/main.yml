@@ -20,19 +20,21 @@ jobs:
       - name: Get JUCE
         if: steps.juce-cache.outputs.cache-hit != 'true'
         run: |
-          .\scoop\apps\wget\current\wget https://github.com/juce-framework/JUCE/releases/download/6.0.1/juce-6.0.1-windows.zip
+          cd ~
+          D:\a\NewProject\NewProject\scoop\apps\wget\current\wget https://github.com/juce-framework/JUCE/releases/download/6.0.1/juce-6.0.1-windows.zip
           unzip juce-6.0.1-windows.zip
       - name: Cache JUCE & scoop
         id: juce-cache
         uses: actions/cache@v2
         with:
           path: |
-            D:\a\NewProject\NewProject\JUCE
+            ~\JUCE
             D:\a\NewProject\NewProject\scoop
           key: ${{ runner.os }}-juce
       - name: Build
         run: |
           ls ~
+          cd D:\a\NewProject\NewProject
           cd .\Builds\LinuxMakefile
           make
       - name: Upload Artifact
