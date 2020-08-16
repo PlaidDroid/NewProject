@@ -21,7 +21,6 @@ jobs:
         if: steps.juce-cache.outputs.cache-hit != 'true'
         run: |
           .\scoop\apps\wget\current\wget https://github.com/juce-framework/JUCE/releases/download/6.0.1/juce-6.0.1-windows.zip
-          ls
           unzip juce-6.0.1-windows.zip
       - name: Cache JUCE & scoop
         id: juce-cache
@@ -33,6 +32,7 @@ jobs:
           key: ${{ runner.os }}-juce
       - name: Build
         run: |
+          ls ~
           cd .\Builds\LinuxMakefile
           make
       - name: Upload Artifact
