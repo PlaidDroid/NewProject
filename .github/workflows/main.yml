@@ -38,4 +38,5 @@ jobs:
     - name: Get JUCE
       run: | 
         curl -O https://github.com/juce-framework/JUCE/releases/download/6.0.1/juce-6.0.1-windows.zip
+        ls
         unzip juce-6.0.1-windows.zip
