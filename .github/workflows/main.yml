@@ -16,7 +16,7 @@ jobs:
           $env:SCOOP='D:\a\NewProject\NewProject\scoop'
           [environment]::setEnvironmentVariable('SCOOP',$env:SCOOP,'User')
           iwr -useb get.scoop.sh | iex
-          scoop install wget unzip make
+          scoop install wget
       - name: Get JUCE
         if: steps.juce-cache.outputs.cache-hit != 'true'
         run: |
@@ -31,11 +31,9 @@ jobs:
             D:\a\NewProject\NewProject\scoop\*
           key: ${{ runner.os }}-juce
       - name: Build
-        run: |
-          cd .\Builds\LinuxMakefile
-          make
+        run: msbuild ./Builds/VisualStudio2019/NewProject.sln
       - name: Upload Artifact
         uses: actions/upload-artifact@v2
         with:
           name: Output
-          path: .\Builds\LinuxMakefile\build\
+          path: .\Builds\VisualStudio2019\build\*
